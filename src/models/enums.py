@@ -20,3 +20,16 @@ class ExpenseCategory(Enum):
     DEBT_PAYMENT = "Debt Payment"
     INVESTMENT = "Investment"
     LEND = "Lend"
+
+
+class IncomeSource(Enum):
+    PRIMARY_PAYCHECK = "Primary Paycheck"
+    BONUSES = "Bonuses"
+    TIPS = "Tips/Gratuites"
+    FREELANCE = "Freelance"
+    E_COMMERCE = "E-commerce"
+    DIVIDENDS = "Dividends"
+    INTEREST = "Interest"
+    RENTAL_INCOME = "Rental Income"
+    CASHBACK = "Cashback/Rewards"
+    MONEY_BACK = "Money Back"

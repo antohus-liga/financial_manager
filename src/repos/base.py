@@ -54,7 +54,6 @@ class Base:
                     exchange_rate TEXT,
                     amount_base TEXT,
                     source TEXT,
-                    category TEXT,
                     date TEXT NOT NULL,
                     notes TEXT
                 );
