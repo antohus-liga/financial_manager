@@ -10,7 +10,8 @@ from src.models.enums import Currency, ExpenseCategory
 @dataclass
 class Expense:
     amount_base: Decimal
-    original_curreny: Currency
+    amount_original: Decimal
+    currency_code: Currency
     exchange_rate: Decimal
     payee: str
     category: ExpenseCategory

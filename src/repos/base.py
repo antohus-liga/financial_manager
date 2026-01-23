@@ -1,4 +1,5 @@
 import sqlite3
+from contextlib import contextmanager
 
 
 class Base:
@@ -6,8 +7,18 @@ class Base:
         self.db_path = db_path
         self._create_tables()
 
+    @contextmanager
     def get_connection(self):
-        return sqlite3.connect(self.db_path)
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        try:
+            yield conn
+            conn.commit()
+        except Exception as e:
+            conn.rollback()
+            raise e
+        finally:
+            conn.close()
 
     def _create_tables(self):
         with self.get_connection() as conn:
@@ -38,7 +49,7 @@ class Base:
                     payee TEXT,
                     category TEXT,
                     date TEXT NOT NULL,
-                    loan_id TEXT
+                    loan_id TEXT,
                     notes TEXT,
                     FOREIGN KEY (loan_id) REFERENCES loans (id) ON DELETE SET NULL
                 );
