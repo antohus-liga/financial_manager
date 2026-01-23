@@ -2,9 +2,18 @@ from enum import Enum
 
 
 class Currency(Enum):
-    EUR = "€"
-    USR = "$"
-    RUB = "₽"
+    EUR = "EUR"
+    USD = "USD"
+    RUB = "RUB"
+
+    @property
+    def symbol(self):
+        map = {
+            "USD": "$",
+            "EUR": "€",
+            "RUB": "₽",
+        }
+        return map.get(self.value, "$")
 
 
 class ExpenseCategory(Enum):
@@ -33,3 +42,9 @@ class IncomeSource(Enum):
     RENTAL_INCOME = "Rental Income"
     CASHBACK = "Cashback/Rewards"
     MONEY_BACK = "Money Back"
+
+
+class LoanStatus(Enum):
+    ACTIVE = "Active"
+    INACTIVE = "Inactive"
+    PROSPECT = "Prospect"
