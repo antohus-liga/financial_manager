@@ -3,7 +3,7 @@ from uuid import UUID, uuid4
 from decimal import Decimal
 import datetime
 
-from models.enums import Currency, LoanStatus
+from src.models.enums import Currency, LoanStatus
 
 
 @dataclass
