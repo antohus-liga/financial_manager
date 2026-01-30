@@ -1,5 +1,5 @@
 from src.models.loan import Loan
-from src.repos.base import Base
+from src.repos.base_repo import Base
 
 
 class LoanRepo(Base):

@@ -1,5 +1,5 @@
 from src.models.expense import Expense
-from src.repos.base import Base
+from src.repos.base_repo import Base
 
 
 class ExpenseRepo(Base):

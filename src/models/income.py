@@ -4,7 +4,7 @@ from decimal import Decimal
 from typing import Optional
 from uuid import UUID, uuid4
 
-from src.models.enums import Currency, IncomeSource
+from src.models.models_enums import Currency, IncomeSource
 
 
 @dataclass

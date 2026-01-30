@@ -4,7 +4,7 @@ from decimal import Decimal
 from typing import Optional
 import datetime
 
-from src.models.enums import Currency, ExpenseCategory
+from src.models.models_enums import Currency, ExpenseCategory
 
 
 @dataclass

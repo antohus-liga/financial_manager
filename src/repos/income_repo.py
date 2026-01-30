@@ -1,5 +1,5 @@
 from src.models.income import Income
-from src.repos.base import Base
+from src.repos.base_repo import Base
 
 
 class IncomeRepo(Base):
