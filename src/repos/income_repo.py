@@ -39,3 +39,7 @@ class IncomeRepo(Base):
             date=row["date"],
             notes=row["notes"],
         )
+
+    def delete(self, income_id):
+        with self.get_connection() as conn:
+            conn.execute("DELETE FROM incomes WHERE id = ?", (income_id,))

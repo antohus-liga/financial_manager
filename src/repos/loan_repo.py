@@ -39,3 +39,7 @@ class LoanRepo(Base):
             status=row["status"],
             start_date=row["start_date"],
         )
+
+    def delete(self, loan_id):
+        with self.get_connection() as conn:
+            conn.execute("DELETE FROM loans WHERE id = ?", (loan_id,))

@@ -43,3 +43,7 @@ class ExpenseRepo(Base):
             loan_id=row["loan_id"],
             notes=row["notes"],
         )
+
+    def delete(self, expense_id):
+        with self.get_connection() as conn:
+            conn.execute("DELETE FROM expenses WHERE id = ?", (expense_id,))
