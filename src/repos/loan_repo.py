@@ -22,3 +22,20 @@ class LoanRepo(Base):
                     loan.status.value,
                 ),
             )
+
+    def get_all(self):
+        with self.get_connection() as conn:
+            cursor = conn.execute("SELECT * FROM loans ORDER BY date DESC")
+            return [self._map_to_obj(row) for row in cursor.fetchall()]
+
+    def _map_to_obj(self, row) -> Loan:
+        return Loan(
+            id=row["id"],
+            original_amount=row["original_amount"],
+            current_amount=row["current_amount"],
+            currency_code=row["currency_code"],
+            interest_rate=row["interest_rate"],
+            lender_name=row["lender_name"],
+            status=row["status"],
+            start_date=row["start_date"],
+        )

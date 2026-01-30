@@ -24,3 +24,22 @@ class ExpenseRepo(Base):
                     expense.notes,
                 ),
             )
+
+    def get_all(self):
+        with self.get_connection() as conn:
+            cursor = conn.execute("SELECT * FROM expenses ORDER BY date DESC")
+            return [self._map_to_obj(row) for row in cursor.fetchall()]
+
+    def _map_to_obj(self, row) -> Expense:
+        return Expense(
+            id=row["id"],
+            amount_base=row["amount_base"],
+            amount_original=row["amount_original"],
+            currency_code=row["currency_code"],
+            exchange_rate=row["exchange_rate"],
+            payee=row["payee"],
+            category=row["category"],
+            date=row["date"],
+            loan_id=row["loan_id"],
+            notes=row["notes"],
+        )
